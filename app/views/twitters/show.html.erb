@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<%= turbo_frame_tag dom_id(@twitter) do %>
+  <%= render @twitter %>
+<% end %>
+<%= link_to 'Edit', edit_twitter_path(@twitter) %> |
+<%= link_to 'Back', twitter_path %>

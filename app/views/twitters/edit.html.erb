@@ -1,0 +1,6 @@
+<%= turbo_frame_tag dom_id(@twitter) do %>
+  <%= render 'form', twitter: @twitter %>
+  <%= link_to 'Show', @twitter %> |
+<%= link_to 'Back', twitters_path %>
+<% end %>
+

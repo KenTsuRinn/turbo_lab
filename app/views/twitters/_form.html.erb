@@ -1,0 +1,37 @@
+<%= form_with(model: twitter, id: dom_id(twitter)) do |form| %>
+  <% if twitter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(twitter.errors.count, "error") %> prohibited this twitter from being saved:</h2>
+
+      <ul>
+        <% twitter.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user %>
+    <%= form.text_field :user %>
+  </div>
+
+  <div class="field">
+    <%= form.label :like %>
+    <%= form.number_field :like %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dislike %>
+    <%= form.number_field :dislike %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
