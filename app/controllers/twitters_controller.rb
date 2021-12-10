@@ -24,11 +24,12 @@ class TwittersController < ApplicationController
 
     respond_to do |format|
       if @twitter.save
-        format.html { redirect_to @twitter, notice: 'Twitter was successfully created.' }
+        format.html { redirect_to twitters_url, notice: 'Tweet was successfully created.' }
         format.json { render :show, status: :created, location: @twitter }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @twitter.errors, status: :unprocessable_entity }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(@twitter, partial: "twitters/form", locals: { twitter: @twitter }) }
+        format.html { render :new }
+        format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -1,9 +1,14 @@
 <p id="notice"><%= notice %></p>
+
 <h1>Twitters</h1>
+
 <%= turbo_stream_from "twitters" %>
-<%= turbo_frame_tag "twitters_form" do %>
-  <%= render 'twitters/form', twitter:@twitter %>
-<%end%>
+
+<%= turbo_frame_tag "twitter_form" do %>
+  <%= render 'twitters/form', twitter: @twitter %>
+<% end %>
+
+
 <%= turbo_frame_tag "twitters" do %>
-  <%= render partial: "twitter", collection: @twitters %>
+  <%= render @twitters %>
 <% end %>
