@@ -1,11 +1,8 @@
 <p id="notice"><%= notice %></p>
 <h1>Twitters</h1>
-
 <%# <%= turbo_stream_from "twitters" %>
-
 <div id='flash'>
 </div>
-
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   New Post
@@ -19,6 +16,10 @@
   </div>
 </div>
 <hr/>
+<!-- Position it -->
+<div id="toast_anchor" style="position: absolute; top: 0; right: 0;">
+  <!-- Then put toasts within -->
+</div>
 <%= turbo_frame_tag "twitters" do %>
   <%= render @twitters %>
 <% end %>

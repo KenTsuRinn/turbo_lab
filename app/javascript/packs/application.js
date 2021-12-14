@@ -11,9 +11,17 @@ import 'css/site'
 import 'jquery'
 import 'popper.js'
 import 'bootstrap'
+require('jquery')
 
 Rails.start()
 ActiveStorage.start()
+
+import { Application } from "stimulus"
+import { definitionsFromContext } from "stimulus/webpack-helpers"
+
+const application = Application.start()
+const context = require.context("controllers", true, /_controller\.js$/)
+application.load(definitionsFromContext(context))
 
 document.addEventListener('turbo:before-fetch-request', async (event) => {
     event.preventDefault()
@@ -21,3 +29,4 @@ document.addEventListener('turbo:before-fetch-request', async (event) => {
     console.log('................')
     event.detail.resume()
   })
+import "controllers"

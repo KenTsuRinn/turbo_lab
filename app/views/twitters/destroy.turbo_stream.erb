@@ -1,2 +1,2 @@
 <%= turbo_stream.remove dom_id(@twitter) %>
-<%= turbo_stream.append "flash", partial: '/shared/flash', locals:{msg_type: :notice, message:"delete successfully"}%>
+<%= turbo_stream.append "toast_anchor", partial: '/shared/toast', locals:{msg_type: :notice, message:"delete successfully"}%>
