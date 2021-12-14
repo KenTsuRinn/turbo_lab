@@ -5,9 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-2.times do |_t|
+25.times do |_t|
   Twitter.create(content: Faker::Lorem.paragraph(sentence_count: 5), user: Faker::Name.name,
                  like: Faker::Number.digit, dislike: Faker::Number.digit, created_at: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
                  updated_at: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now))
-  end
-  
+end

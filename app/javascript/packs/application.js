@@ -14,3 +14,10 @@ import 'bootstrap'
 
 Rails.start()
 ActiveStorage.start()
+
+document.addEventListener('turbo:before-fetch-request', async (event) => {
+    event.preventDefault()
+  
+    console.log('................')
+    event.detail.resume()
+  })

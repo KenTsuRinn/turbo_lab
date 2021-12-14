@@ -1,9 +1,12 @@
 <%= turbo_frame_tag dom_id(twitter) do%>
- <div class="card card-body">
+  <div class="card card-body">
     <div><%= twitter.content %></div>
-
     <div class="mt-2">
       <%= link_to "Edit", edit_twitter_path(twitter) %>
+    </div>
+    <div class="mt-2">
+      <%= link_to "Edit", edit_twitter_path(twitter) %>
+      <%= link_to "Delete", twitter_path(twitter), method: :delete %>
     </div>
   </div>
 <%end%>

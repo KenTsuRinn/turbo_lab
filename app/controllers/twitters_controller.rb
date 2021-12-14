@@ -1,5 +1,6 @@
 class TwittersController < ApplicationController
   before_action :set_twitter, only: %i[show edit update destroy]
+  include ActionView::RecordIdentifier
 
   # GET /twitters or /twitters.json
   def index
@@ -27,7 +28,9 @@ class TwittersController < ApplicationController
         format.html { redirect_to twitters_url, notice: 'Tweet was successfully created.' }
         format.json { render :show, status: :created, location: @twitter }
       else
-        format.turbo_stream { render turbo_stream: turbo_stream.replace(@twitter, partial: "twitters/form", locals: { twitter: @twitter }) }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(@twitter, partial: 'twitters/form', locals: { twitter: @twitter })
+        end
         format.html { render :new }
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
@@ -51,6 +54,15 @@ class TwittersController < ApplicationController
   def destroy
     @twitter.destroy
     respond_to do |format|
+      # format.turbo_stream do
+      #   render turbo_stream:
+      #     [
+      #       turbo_stream.remove(dom_id(@twitter)),
+      #       turbo_stream.append('flash', partial: 'shared/flash',
+      #                                    locals: { msg_type: :notice, message: 'delete successfully!' })
+      #     ]
+      # end
+      format.turbo_stream
       format.html { redirect_to twitters_url, notice: 'Twitter was successfully destroyed.' }
       format.json { head :no_content }
     end

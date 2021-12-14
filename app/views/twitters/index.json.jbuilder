@@ -1,1 +1,1 @@
-json.array! @twitters, partial: "twitters/twitter", as: :twitter
+json.array! @twitters, partial: 'twitters/twitter', as: :twitter

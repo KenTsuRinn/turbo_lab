@@ -1,1 +1,1 @@
-json.partial! "twitters/twitter", twitter: @twitter
+json.partial! 'twitters/twitter', twitter: @twitter
