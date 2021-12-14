@@ -29,4 +29,3 @@ document.addEventListener('turbo:before-fetch-request', async (event) => {
     console.log('................')
     event.detail.resume()
   })
-import "controllers"
