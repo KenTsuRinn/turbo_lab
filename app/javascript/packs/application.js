@@ -12,6 +12,8 @@ import 'jquery'
 import 'popper.js'
 import 'bootstrap'
 require('jquery')
+require("trix")
+require("@rails/actiontext")
 
 Rails.start()
 ActiveStorage.start()
@@ -29,3 +31,6 @@ document.addEventListener('turbo:before-fetch-request', async (event) => {
     console.log('................')
     event.detail.resume()
   })
+
+require("trix")
+require("@rails/actiontext")
