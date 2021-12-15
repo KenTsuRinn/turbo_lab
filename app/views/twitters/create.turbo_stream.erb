@@ -1,1 +1,3 @@
 <%= turbo_stream.prepend "twitters", partial: 'twitters/twitter', locals:{twitter: @twitter} %>
+<%= turbo_stream.append "toast_anchor", partial: '/shared/toast', locals:{msg_type: :notice, message:"create successfully"}%>
+
