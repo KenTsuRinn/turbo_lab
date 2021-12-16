@@ -1,10 +1,11 @@
 class TwittersController < ApplicationController
   before_action :set_twitter, only: %i[show edit update destroy]
-  include ActionView::RecordIdentifier
 
   # GET /twitters or /twitters.json
   def index
-    @twitters = Twitter.all
+    ApplicationRecord.transaction(isolation: :read_uncommitted) do
+      @twitters = Twitter.all
+    end
     @twitter = Twitter.new
   end
 
