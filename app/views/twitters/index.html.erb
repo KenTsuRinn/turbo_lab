@@ -27,4 +27,5 @@
   <%= render @twitters %>
 <% end %>
 <hr/>
+
 <%= render partial: 'shared/pagination', locals:{current_page: @current_page, page_size:@page_size, counts:@counts} %>
