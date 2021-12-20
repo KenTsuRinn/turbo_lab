@@ -4,7 +4,10 @@ class TwittersController < ApplicationController
   # GET /twitters or /twitters.json
   def index
     ApplicationRecord.transaction(isolation: :read_uncommitted) do
-      @twitters = Twitter.all
+      @current_page = params[:page].to_i || 0
+      @page_size = 5
+      @twitters = Twitter.order(created_at: :desc).limit(@page_size).offset(@current_page * @page_size)
+      @counts = Twitter.count
     end
     @twitter = Twitter.new
   end

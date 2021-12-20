@@ -1,0 +1,26 @@
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <% if current_page > 0 %>
+        <%=link_to  twitters_path(:page=>current_page-1), {class:"page-link"} do %>
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        <% end %>
+      <% end %>
+    </li>
+    <% last_page= (counts/page_size).ceil%>
+    <% for i in 0..last_page do %>
+      <li class="page-item">
+        <%= link_to "#{i+1}", twitters_path(:page=>i), {class:"page-link"} %>
+      </li>
+    <% end %>
+    <li class="page-item">
+      <% if current_page < last_page %>
+        <%=link_to twitters_path(:page=>current_page+1), {class:"page-link"} do %>
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        <% end %>
+      <% end %>
+    </li>
+  </ul>
+</nav>
